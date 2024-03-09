@@ -10,3 +10,19 @@ class AppService:
     def get_tasks(self):
         data = self.database.get_tasks()
         return data
+    
+    def get_task_by_id(self, id: int):
+        data = self.database.get_task_by_id(id)
+        return data
+    
+    def create_task(self, task: dict):
+        data_inserted = self.database.create_task(task)
+        return data_inserted
+    
+    def update_task(self, id: int, task: dict):
+        data_updated = self.database.update_task(id, task)
+        return data_updated
+    
+    def delete_task(self, id: str):
+        id_deleted = self.database.delete_task(id)
+        return id_deleted

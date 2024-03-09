@@ -32,3 +32,21 @@ def home():
 @app.route("/tasks", methods=["GET"])
 def get_tasks():
     return appService.get_tasks()
+
+@app.route("/tasks/<int:id>", methods=["GET"])
+def get_task_by_id(id):
+    return appService.get_task_by_id(id)
+
+@app.route("/tasks", methods=["POST"])
+def create_task():
+    request_data = request.get_json()
+    return appService.create_task(request_data)
+
+@app.route("/tasks/<int:id>", methods=["PUT"])
+def update_task(id):
+    request_data = request.get_json()
+    return appService.update_task(id, request_data)
+
+@app.route("/tasks/<int:id>", methods=["DELETE"])
+def delete_task(id):
+    return appService.delete_task(str(id))

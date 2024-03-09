@@ -11,12 +11,14 @@ WORKDIR /opt/app
 
 COPY . .
 
+# Install Poetry
 RUN pip install poetry
+# Install dependencies
 RUN poetry install
 
 VOLUME /data_store
 EXPOSE 5000
 
-# Command "python3 -m flask run --host=0.0.0.0"
+# Command to start server
 CMD ["poetry", "run", "python3", "-m", "flask", "run", "--host=0.0.0.0"]
 
