@@ -10,6 +10,19 @@ class Database:
             password=password, port=port
         )
 
+    def getUser(self, user):
+        cursor = self.conn.cursor()
+
+        #Query
+        query = "SELECT password FROM users WHERE name = %s;"
+
+        cursor.execute(query, (user,))
+        data = cursor .fetchall()
+
+        cursor.close()
+
+        return data
+
     def get_tasks(self):
         cursor = self.conn.cursor()
         

@@ -29,24 +29,24 @@ def home():
             {cuarto_integrante} \n"
     return texto
 
-@app.route("/tasks", methods=["GET"])
-def get_tasks():
-    return appService.get_tasks()
+@app.route("/tasks/<string:user>/<string:password>", methods=["GET"])
+def get_tasks(user, password):
+    return appService.get_tasks(user, password)
 
-@app.route("/tasks/<int:id>", methods=["GET"])
-def get_task_by_id(id):
-    return appService.get_task_by_id(id)
+@app.route("/tasks/<string:user>/<string:password>/<int:id>", methods=["GET"])
+def get_task_by_id(user, password,id):
+    return appService.get_task_by_id(user, password, id)
 
-@app.route("/tasks", methods=["POST"])
-def create_task():
+@app.route("/tasks/<string:user>/<string:password>", methods=["POST"])
+def create_task(user, password):
     request_data = request.get_json()
-    return appService.create_task(request_data)
+    return appService.create_task(user, password, request_data)
 
-@app.route("/tasks/<int:id>", methods=["PUT"])
-def update_task(id):
+@app.route("/tasks/<string:user>/<string:password>/<int:id>", methods=["PUT"])
+def update_task(user, password, id):
     request_data = request.get_json()
-    return appService.update_task(id, request_data)
+    return appService.update_task(user, password, id, request_data)
 
-@app.route("/tasks/<int:id>", methods=["DELETE"])
-def delete_task(id):
-    return appService.delete_task(str(id))
+@app.route("/tasks/<string:user>/<string:password>/<int:id>", methods=["DELETE"])
+def delete_task(user, password, id):
+    return appService.delete_task(user, password, str(id))

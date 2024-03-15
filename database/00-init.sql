@@ -4,7 +4,8 @@ CREATE DATABASE tasks;
 
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(200) NOT NULL
+    name VARCHAR(200) NOT NULL,
+    password VARCHAR(200) NOT NULL
 );
 
 CREATE TABLE status (

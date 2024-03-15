@@ -1,6 +1,6 @@
 \c tasks;
 
-INSERT INTO users (name) VALUES
-('User 1'),
-('User 2'),
-('User 3');
+INSERT INTO users (name, password) VALUES
+('User1', 'PS1'),
+('User2', 'PS2'),
+('User3', 'PS3');
