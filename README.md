@@ -22,7 +22,7 @@ Este proyecto requiere de tener funcional Docker, ya que este incluye sus respec
  1. Verificar que Docker esté instalado en la maquina a contruir y desplegar.
  2. Clonar este repositorio localmente.
  3. Para correr el contenedore se debe ejecutar el comando
- **`docker-compose up`**.
+ **`docker-compose up`** en el directorio de la aplicacion.
  4. Una vez hecho esto, se puede acceder a la aplciación a través de **`http://localhost:5002`**
 
     Una vez concluido con estos pasos, la aplicación puede ser accesada para utilizar y probar sus funciones.
