@@ -17,7 +17,7 @@ class Database:
         query = "SELECT password FROM users WHERE name = %s;"
 
         cursor.execute(query, (user,))
-        data = cursor .fetchall()
+        data = cursor.fetchall()
 
         cursor.close()
 

@@ -31,22 +31,37 @@ def home():
 
 @app.route("/tasks/<string:user>/<string:password>", methods=["GET"])
 def get_tasks(user, password):
-    return appService.get_tasks(user, password)
+    if not(appService.auth_user(user, password)):
+        return "El usuario no existe o la contraseña es incorrecta"
+    
+    return appService.get_tasks()
 
 @app.route("/tasks/<string:user>/<string:password>/<int:id>", methods=["GET"])
 def get_task_by_id(user, password,id):
-    return appService.get_task_by_id(user, password, id)
+    if not(appService.auth_user(user, password)):
+            return "El usuario no existe o la contraseña es incorrecta"
+
+    return appService.get_task_by_id(id)
 
 @app.route("/tasks/<string:user>/<string:password>", methods=["POST"])
 def create_task(user, password):
+    if not(appService.auth_user(user, password)):
+        return "El usuario no existe o la contraseña es incorrecta"
+
     request_data = request.get_json()
-    return appService.create_task(user, password, request_data)
+    return appService.create_task(request_data)
 
 @app.route("/tasks/<string:user>/<string:password>/<int:id>", methods=["PUT"])
 def update_task(user, password, id):
+    if not(appService.auth_user(user, password)):
+        return "El usuario no existe o la contraseña es incorrecta"
+
     request_data = request.get_json()
-    return appService.update_task(user, password, id, request_data)
+    return appService.update_task(id, request_data)
 
 @app.route("/tasks/<string:user>/<string:password>/<int:id>", methods=["DELETE"])
 def delete_task(user, password, id):
-    return appService.delete_task(user, password, str(id))
+    if not(appService.auth_user(user, password)):
+        return "El usuario no existe o la contraseña es incorrecta"
+
+    return appService.delete_task(str(id))
